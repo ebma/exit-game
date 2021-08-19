@@ -1,14 +1,11 @@
-import './index.css'
-import './App.css'
+import "./index.css";
+import "./App.css";
+import Header from "./components/Header";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>Hello, World!</p>
-      </header>
-    </div>
-  )
+  return <div className="container mx-auto">
+    <Header/>
+  </div>;
 }
 
-export default App
+export default App;
