@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import "./index.css"
 
 function TextBubble(props) {
-  const { children, type, orientation = "left" } = props
+  const { children, onClick, type, orientation = "left" } = props
 
   const mirrorClass =
     type === "speech" && orientation === "right"
@@ -13,7 +13,7 @@ function TextBubble(props) {
       : undefined
 
   return (
-    <div className={clsx("bubble", type, mirrorClass)}>
+    <div className={clsx("bubble", type, mirrorClass)} onClick={onClick}>
       <span className={mirrorClass} style={{ position: "absolute" }}>
         {children}
       </span>
@@ -25,6 +25,7 @@ TextBubble.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf(["whisper", "speech", "electric"]).isRequired,
   orientation: PropTypes.oneOf(["left", "right"]),
+  onClick: PropTypes.func,
 }
 
 export default TextBubble

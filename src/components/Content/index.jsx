@@ -1,11 +1,8 @@
-import TextBubble from "../TextBubble"
+import Narrator from "../Narrator"
 
 function Content() {
-  return (
-    <TextBubble type="speech" orientation="right">
-      Hello, World!
-    </TextBubble>
-  )
+  const sentences = ["Test1", "Test2"]
+  return <Narrator sentences={sentences} />
 }
 
 export default Content
