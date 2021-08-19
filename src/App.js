@@ -1,13 +1,13 @@
 import "./index.css"
 import "./App.css"
 import Header from "./components/Header"
-import Content from "./components/Content"
+import LandingPage from "./pages/landing-page"
 
 function App() {
   return (
     <div className="container mx-auto">
       <Header />
-      <Content />
+      <LandingPage />
     </div>
   )
 }
