@@ -3,16 +3,11 @@ import React from "react"
 import clsx from "clsx"
 
 function Button(props) {
-  const { children, onClick, type = "info" } = props
+  const { children, onClick, variant = "info" } = props
 
-  const className = clsx(
-    "px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors transform rounded-md dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none dark:focus:bg-gray-700",
-    type === "info" && "bg-blue-500 hover:bg-blue-500 focus:bg-blue-500",
-    type === "error" && "bg-red-500 hover:bg-red-500 focus:bg-red-500",
-    type === "warning" && "bg-yellow-400 hover:bg-yellow-400 focus:bg-yellow-400"
-  )
+  const className = clsx("btn btn-primary", props.className)
   return (
-    <button className={className} onClick={onClick}>
+    <button className={className} onClick={onClick} type="button">
       {children}
     </button>
   )
@@ -20,8 +15,9 @@ function Button(props) {
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   onClick: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(["error", "info", "warning"]),
+  variant: PropTypes.oneOf(["error", "info", "warning"]),
 }
 
 export default Button

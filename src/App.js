@@ -1,12 +1,16 @@
-import "./index.css"
+import React from "react"
+import { themeChange } from "theme-change"
 import "./App.css"
-import Header from "./components/Header"
+import "./index.css"
 import LandingPage from "./pages/landing-page"
 
 function App() {
+  React.useEffect(() => {
+    themeChange(false)
+  }, [])
+
   return (
-    <div className="container mx-auto">
-      <Header />
+    <div>
       <LandingPage />
     </div>
   )
