@@ -1,39 +1,46 @@
+import PropTypes from "prop-types"
 import React from "react"
+import { motion } from "framer-motion"
 import "./index.scss"
-
 function SlidingDoor(props) {
-  const { children } = props
+  const { children, leftPanel, rightPanel } = props
   const [checked, setChecked] = React.useState(true)
 
   return (
     <div className="curtain">
       <div className="curtain__wrapper">
-        {checked ? (
+        {checked && (
           <input
             type="checkbox"
             checked={checked}
-            onChange={(event) => {
+            onChange={() => {
               setChecked(!checked)
             }}
           />
-        ) : undefined}
+        )}
 
-        <div className="curtain__panel curtain__panel--left bg-primary">
-          <div className="pr-4 prose prose-lg">
-            <h1 className="prose">Exit</h1>
-          </div>
-        </div>
-
-        <div className="curtain__content">{children}</div>
-
-        <div className="curtain__panel curtain__panel--right bg-primary">
-          <div className="pl-4 prose prose-lg">
-            <h1 className="prose">Game</h1>
-          </div>
-        </div>
+        <div className="curtain__panel curtain__panel--left bg-primary">{leftPanel}</div>
+        {!checked && (
+          <motion.div
+            className="curtain__content"
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 1 }}
+            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+          >
+            {children}
+          </motion.div>
+        )}
+        <div className="curtain__panel curtain__panel--right bg-primary">{rightPanel}</div>
       </div>
     </div>
   )
+}
+
+SlidingDoor.propTypes = {
+  children: PropTypes.node.isRequired,
+  leftPanel: PropTypes.node,
+  rightPanel: PropTypes.node,
 }
 
 export default SlidingDoor
