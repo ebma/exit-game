@@ -1,9 +1,26 @@
+import { motion, useMotionValue } from "framer-motion"
 import React from "react"
-import SlidingDoor from "../components/SlidingDoor"
-import TypewriterText from "../components/TypewriterText"
 import RevealingText from "../components/RevealingText"
+import SlidingDoor from "../components/SlidingDoor"
+import SolutionBar from "../components/SolutionBar"
+import TypewriterText from "../components/TypewriterText"
 
 function LandingPage() {
+  const [step, setStep] = React.useState(0)
+  const [showButton, setShowButton] = React.useState(false)
+  const [showBar, setShowBar] = React.useState(false)
+
+  const showButtonCallback = React.useCallback(() => setShowButton(true), [])
+  const showBarCallback = React.useCallback(() => setShowBar(true), [])
+
+  const buttonOpacity = useMotionValue(0)
+
+  React.useEffect(() => {
+    showButton ? buttonOpacity.set(1) : buttonOpacity.set(0)
+  }, [buttonOpacity, showButton])
+
+  console.log("step", step)
+
   return (
     <SlidingDoor
       leftPanel={
@@ -21,13 +38,42 @@ function LandingPage() {
         <div className="min-h-screen hero">
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="text-center hero-content text-neutral-content">
-            <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-              <TypewriterText className="mb-5 text-3xl">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In
-                deleniti eaque aut repudiandae et a id nisi.
-              </TypewriterText>
-              <button className="mt-8 btn btn-primary">Get Started</button>
+            {showBar && (
+              <motion.div
+                className="absolute w-1/3 top-4"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  visible: { opacity: 1 },
+                  hidden: { opacity: 0 },
+                }}
+              >
+                <SolutionBar label="" placeholder="Solution" />
+              </motion.div>
+            )}
+            <div className="max-w-lg">
+              <h1 className="mb-5 text-5xl font-bold">Hello there!</h1>
+              {step === 0 ? (
+                <TypewriterText callback={showButtonCallback} className="mb-5 text-3xl">
+                  Welcome to an all new and exciting adventure. This game consists of several puzzles that you need to
+                  solve. To find out how to do this, click on the button below.
+                </TypewriterText>
+              ) : (
+                <TypewriterText callback={showBarCallback} className="mb-5 text-3xl">
+                  Every puzzle has a solution. To solve your first puzzle enter the Solution in the bar at the top.
+                </TypewriterText>
+              )}
+              <motion.button
+                className="mt-8 btn btn-primary"
+                disabled={!showButton}
+                onClick={() => {
+                  setShowButton(false)
+                  setStep(1)
+                }}
+                style={{ opacity: buttonOpacity }}
+              >
+                Get Started
+              </motion.button>
             </div>
           </div>
         </div>
