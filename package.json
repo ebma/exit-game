@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "precommit": "lint-staged",
+    "start": "npm run dev",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
@@ -42,6 +43,7 @@
     "sass": "^1.38.0",
     "theme-change": "^2.0.2",
     "typewriter-effect": "^2.18.0",
+    "universal-base64url": "^1.1.0",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {

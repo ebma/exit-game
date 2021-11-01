@@ -3,6 +3,7 @@ import { HashRouter as Router, Route } from "react-router-dom"
 import { themeChange } from "theme-change"
 import "./App.css"
 import "./index.css"
+import { encode } from "./lib/utils"
 import ErrorPage from "./pages/error-page"
 import FirstPuzzlePage from "./pages/first-puzzle"
 import LandingPage from "./pages/landing-page"
@@ -17,7 +18,7 @@ function App() {
       <Route exact path="/">
         <LandingPage />
       </Route>
-      <Route exact path="/Solution">
+      <Route exact path={`/${encode("Solution")}`}>
         <FirstPuzzlePage />
       </Route>
       <Route path="*">

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types"
 import React from "react"
 import { useHistory } from "react-router"
+import { encode } from "../../lib/utils"
 
 function SolutionBar(props) {
   const { placeholder, label = "Solution" } = props
@@ -11,7 +12,14 @@ function SolutionBar(props) {
 
   const handleChange = React.useCallback((e) => setInput(e.target.value), [])
 
-  const onSubmit = React.useCallback(() => history.push(input), [input, history])
+  const onSubmit = React.useCallback(() => {
+    try {
+      const target = encode(input)
+      history.push(target)
+    } catch (error) {
+      console.error(error)
+    }
+  }, [input, history])
 
   return (
     <div className="form-control">
