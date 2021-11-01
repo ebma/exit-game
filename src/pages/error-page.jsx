@@ -1,7 +1,15 @@
 import React from "react"
+import { FaArrowLeft } from "react-icons/fa"
+import { useHistory } from "react-router"
 import TypewriterText from "../components/TypewriterText"
 
 function ErrorPage() {
+  const history = useHistory()
+
+  const goBack = React.useCallback(() => {
+    history.goBack()
+  }, [history])
+
   return (
     <div className="px-6 mx-auto">
       <div className="min-h-screen hero">
@@ -10,6 +18,10 @@ function ErrorPage() {
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">Nothing to see here</h1>
             <TypewriterText className="mb-5 text-3xl">You took a wrong turn buddy.</TypewriterText>
+            <button className="mt-4 btn btn-lg" onClick={goBack}>
+              <FaArrowLeft className="mr-2" />
+              Go Back
+            </button>
           </div>
         </div>
       </div>
