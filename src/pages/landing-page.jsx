@@ -56,11 +56,11 @@ function LandingPage() {
               {step === 0 ? (
                 <TypewriterText callback={showButtonCallback} className="mb-5 text-3xl">
                   Welcome to an all new and exciting adventure. This game consists of several puzzles that you need to
-                  solve. To find out how to do this, click on the button below.
+                  solve.
                 </TypewriterText>
               ) : (
                 <TypewriterText callback={showBarCallback} className="mb-5 text-3xl">
-                  Every puzzle has a solution. To solve your first puzzle enter the Solution in the bar at the top.
+                  Every puzzle has a solution. To solve your first puzzle enter Solution in the bar at the top.
                 </TypewriterText>
               )}
               <motion.button
