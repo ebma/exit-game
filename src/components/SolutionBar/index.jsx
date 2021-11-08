@@ -1,12 +1,12 @@
 import PropTypes from "prop-types"
 import React from "react"
-import { useHistory } from "react-router"
 import { encode } from "../../lib/utils"
+import { useNavigate } from "react-router-dom"
 
 function SolutionBar(props) {
   const { placeholder, label = "Solution" } = props
 
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const [input, setInput] = React.useState("")
 
@@ -23,11 +23,11 @@ function SolutionBar(props) {
   const onSubmit = React.useCallback(() => {
     try {
       const target = encode(input)
-      history.push(target)
+      navigate(target)
     } catch (error) {
       console.error(error)
     }
-  }, [input, history])
+  }, [input, navigate])
 
   return (
     <div className="form-control">

@@ -1,14 +1,14 @@
 import React from "react"
 import { FaArrowLeft } from "react-icons/fa"
-import { useHistory } from "react-router"
+import { useNavigate } from "react-router-dom"
 import TypewriterText from "../components/TypewriterText"
 
 function ErrorPage() {
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const goBack = React.useCallback(() => {
-    history.goBack()
-  }, [history])
+    navigate(-1)
+  }, [navigate])
 
   return (
     <div className="px-6 mx-auto">
