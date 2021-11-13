@@ -1,8 +1,7 @@
 import { motion } from "framer-motion"
 import React from "react"
-import { useHistory } from "react-router"
 import TypewriterText from "../components/TypewriterText"
-import { encode } from "../lib/utils"
+import { useSolution } from "../lib/solutions"
 
 function Brick(props) {
   const { selected, onClick } = props
@@ -12,9 +11,15 @@ function Brick(props) {
       animate={selected ? "selected" : "normal"}
       initial="normal"
       className="flex-1 opacity-50 btn"
-      style={{ height: "unset" }}
+      style={{
+        height: "unset",
+        minHeight: "unset",
+      }}
       onClick={onClick}
-      variants={{ selected: { backgroundColor: "rgb(57,7,7)" }, normal: { backgroundColor: "rgb(0,0,0)" } }}
+      variants={{
+        selected: { backgroundImage: "linear-gradient(to bottom right, rgb(170,98,15), rgb(61,35,4)" },
+        normal: { backgroundImage: "linear-gradient(to bottom right, rgb(121,73,10), rgb(71,41,4)" },
+      }}
     />
   )
 }
@@ -48,25 +53,26 @@ function BrickWall(props) {
 
 const selectedBricks = [
   { row: 3, column: 10 },
-  { row: 12, column: 3 },
-  { row: 5, column: 6 },
-  { row: 14, column: 13 },
-  { row: 7, column: 5 },
+  { row: 22, column: 23 },
+  { row: 5, column: 26 },
+  { row: 24, column: 13 },
+  { row: 0, column: 1 },
+  { row: 29, column: 29 },
+  { row: 15, column: 15 },
 ]
 
 function BrickInTheWallPage() {
   const [step, setStep] = React.useState(0)
 
-  const history = useHistory()
+  const { goNext } = useSolution("bricks")
 
   const selectedBrick = step < selectedBricks.length ? selectedBricks[step] : { row: -1, column: -1 }
 
   React.useEffect(() => {
     if (step === selectedBricks.length) {
-      const target = encode("bricks")
-      history.push(target)
+      goNext()
     }
-  }, [history, step])
+  }, [goNext, step])
 
   return (
     <div className="mx-auto overflow-hidden">
@@ -77,7 +83,7 @@ function BrickInTheWallPage() {
             <TypewriterText className="mb-5 text-3xl">Another brick in the wall</TypewriterText>
           </div>
         </div>
-        <BrickWall selected={selectedBrick} onSelectedClick={() => setStep((prev) => ++prev)} rows={20} columns={20} />
+        <BrickWall selected={selectedBrick} onSelectedClick={() => setStep((prev) => ++prev)} rows={30} columns={30} />
       </div>
     </div>
   )
