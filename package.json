@@ -7,7 +7,8 @@
     "start": "npm run dev",
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test": "tsc && prettier --check . && eslint ."
   },
   "eslintConfig": {
     "extends": [
