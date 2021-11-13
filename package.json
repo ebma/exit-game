@@ -6,7 +6,7 @@
     "precommit": "lint-staged",
     "start": "npm run dev",
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "serve": "vite preview"
   },
   "eslintConfig": {
@@ -29,9 +29,6 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.4.1",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "clsx": "^1.1.1",
     "daisyui": "^1.12.1",
     "framer-motion": "^4.1.17",
@@ -45,16 +42,34 @@
     "sass": "^1.38.0",
     "theme-change": "^2.0.2",
     "typewriter-effect": "^2.18.0",
-    "universal-base64url": "^1.1.0",
-    "web-vitals": "^1.0.1"
+    "universal-base64url": "^1.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/node": "^16.11.4",
+    "@types/react": "^17.0.32",
+    "@types/react-dom": "^17.0.10",
+    "@types/react-router-dom": "^5.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
     "autoprefixer": "^10.3.7",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.2.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-testing-library": "^4.12.4",
     "lint-staged": "^11.1.2",
     "postcss": "^8.3.11",
+    "prettier": "^2.4.1",
     "tailwindcss": "^2.2.17",
-    "vite": "^2.6.4"
+    "typescript": "^4.4.4",
+    "vite": "^2.6.4",
+    "vite-tsconfig-paths": "^3.3.17"
   },
   "husky": {
     "hooks": {
