@@ -1,6 +1,12 @@
 import { motion } from "framer-motion"
 
-function RevealingText(props) {
+interface Props {
+  children: string
+  className?: string
+  delay?: number
+}
+
+function RevealingText(props: Props) {
   const { children, className, delay = 2 } = props
 
   return (
@@ -17,7 +23,7 @@ function RevealingText(props) {
         <motion.span
           className="text-5xl"
           key={char + "-" + index}
-          variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, duration: 1 } }}
+          variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
         >
           {char}
         </motion.span>

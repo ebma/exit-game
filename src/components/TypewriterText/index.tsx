@@ -1,12 +1,17 @@
-import PropTypes from "prop-types"
 import React from "react"
-import Typewriter from "typewriter-effect"
+import Typewriter, { TypewriterClass } from "typewriter-effect"
 import "./index.scss"
 
-function TypewriterText(props) {
+interface Props {
+  children: string
+  className?: string
+  callback?: () => void
+}
+
+function TypewriterText(props: Props) {
   const { children, className, callback } = props
 
-  const [typewriter, setTypewriter] = React.useState(null)
+  const [typewriter, setTypewriter] = React.useState<null | TypewriterClass>(null)
 
   React.useEffect(() => {
     if (!typewriter) return
@@ -35,11 +40,6 @@ function TypewriterText(props) {
       options={{ delay: 50, wrapperClassName: className }}
     />
   )
-}
-
-TypewriterText.propTypes = {
-  children: PropTypes.string.isRequired,
-  className: PropTypes.string,
 }
 
 export default TypewriterText

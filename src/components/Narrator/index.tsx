@@ -1,8 +1,11 @@
-import PropTypes from "prop-types"
 import React from "react"
 import TextBubble from "../TextBubble"
 
-function Narrator(props) {
+interface Props {
+  sentences: string[]
+}
+
+function Narrator(props: Props) {
   const { sentences } = props
 
   const [index, setIndex] = React.useState(0)
@@ -16,10 +19,6 @@ function Narrator(props) {
       {sentences[index]}
     </TextBubble>
   )
-}
-
-Narrator.propTypes = {
-  sentences: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default Narrator

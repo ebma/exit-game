@@ -20,9 +20,9 @@ function App() {
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
       <Routes location={location} key={location.pathname}>
-        <Route exact path="/" element={<LandingPage />} />
-        <Route exact path={`/${getRouteFor("bricks")}`} element={<BrickInTheWallPage />} />
-        <Route exact path={`/${getRouteFor("third")}`} element={<ThirdPuzzlePage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path={`/${getRouteFor("bricks")}`} element={<BrickInTheWallPage />} />
+        <Route path={`/${getRouteFor("third")}`} element={<ThirdPuzzlePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </AnimatePresence>

@@ -8,7 +8,9 @@ export const solutions = {
   third: "after-third",
 }
 
-export function useSolution(page) {
+export type Page = keyof typeof solutions
+
+export function useSolution(page: Page) {
   const navigate = useNavigate()
 
   const goNext = React.useCallback(() => {
@@ -20,7 +22,7 @@ export function useSolution(page) {
 }
 
 // Return the page name by encoding the solution of the preceeding puzzle
-export function getRouteFor(page) {
+export function getRouteFor(page: Page) {
   const index = Object.keys(solutions).findIndex((solution) => solution === page)
   const key = index > 0 ? index - 1 : 0
   const route = Object.values(solutions)[key]

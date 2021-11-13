@@ -1,5 +1,3 @@
-import React from "react"
-
 function ToggleThemeButton() {
   return (
     <button data-toggle-theme="emerald,luxury" data-act-class="ACTIVECLASS">

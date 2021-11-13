@@ -1,8 +1,14 @@
 import clsx from "clsx"
-import PropTypes from "prop-types"
 import "./index.css"
 
-function TextBubble(props) {
+interface Props {
+  children: React.ReactNode
+  onClick: () => void
+  type: "speech" | "whisper" | "electric"
+  orientation?: "left" | "right"
+}
+
+function TextBubble(props: Props) {
   const { children, onClick, type, orientation = "left" } = props
 
   const mirrorClass =
@@ -19,13 +25,6 @@ function TextBubble(props) {
       </span>
     </div>
   )
-}
-
-TextBubble.propTypes = {
-  children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(["whisper", "speech", "electric"]).isRequired,
-  orientation: PropTypes.oneOf(["left", "right"]),
-  onClick: PropTypes.func,
 }
 
 export default TextBubble

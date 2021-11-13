@@ -1,7 +1,12 @@
 import { motion } from "framer-motion"
 
-function PageAnimation(props) {
+interface Props {
+  children: React.ReactNode
+}
+
+function PageAnimation(props: Props) {
   const { children } = props
+
   return (
     <motion.div
       className="overflow-hidden"

@@ -4,7 +4,12 @@ import PageAnimation from "../components/PageAnimation"
 import TypewriterText from "../components/TypewriterText"
 import { useSolution } from "../lib/solutions"
 
-function Brick(props) {
+interface BrickProps {
+  selected?: boolean
+  onClick?: () => void
+}
+
+function Brick(props: BrickProps) {
   const { selected, onClick } = props
 
   return (
@@ -25,7 +30,15 @@ function Brick(props) {
   )
 }
 
-function BrickWall(props) {
+interface BrickWallProps {
+  columns: number
+  rows: number
+  selected: { row: number; column: number }
+  onSelectedClick?: () => void
+  onNormalClick?: () => void
+}
+
+function BrickWall(props: BrickWallProps) {
   const { rows, columns, onSelectedClick, onNormalClick } = props
 
   return (
@@ -88,6 +101,7 @@ function BrickInTheWallPage() {
           <BrickWall
             selected={selectedBrick}
             onSelectedClick={() => setStep((prev) => ++prev)}
+            onNormalClick={undefined}
             rows={30}
             columns={30}
           />

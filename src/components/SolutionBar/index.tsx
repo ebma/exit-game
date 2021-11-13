@@ -1,9 +1,13 @@
-import PropTypes from "prop-types"
 import React from "react"
-import { encode } from "../../lib/utils"
 import { useNavigate } from "react-router-dom"
+import { encode } from "../../lib/utils"
 
-function SolutionBar(props) {
+interface Props {
+  placeholder?: string
+  label?: string
+}
+
+function SolutionBar(props: Props) {
   const { placeholder, label = "Solution" } = props
 
   const navigate = useNavigate()
@@ -12,7 +16,7 @@ function SolutionBar(props) {
 
   const handleChange = React.useCallback((e) => setInput(e.target.value), [])
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") {
       event.preventDefault()
       event.stopPropagation()
@@ -49,11 +53,6 @@ function SolutionBar(props) {
       </div>
     </div>
   )
-}
-
-SolutionBar.propTypes = {
-  placeholder: PropTypes.string,
-  label: PropTypes.string,
 }
 
 export default SolutionBar

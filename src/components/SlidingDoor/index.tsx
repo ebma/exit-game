@@ -1,8 +1,14 @@
-import PropTypes from "prop-types"
-import React from "react"
 import { motion } from "framer-motion"
+import React from "react"
 import "./index.scss"
-function SlidingDoor(props) {
+
+interface Props {
+  children: React.ReactNode
+  leftPanel?: React.ReactNode
+  rightPanel?: React.ReactNode
+}
+
+function SlidingDoor(props: Props) {
   const { children, leftPanel, rightPanel } = props
   const [checked, setChecked] = React.useState(true)
 
@@ -35,12 +41,6 @@ function SlidingDoor(props) {
       </div>
     </div>
   )
-}
-
-SlidingDoor.propTypes = {
-  children: PropTypes.node.isRequired,
-  leftPanel: PropTypes.node,
-  rightPanel: PropTypes.node,
 }
 
 export default SlidingDoor
