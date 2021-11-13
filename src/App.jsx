@@ -1,5 +1,6 @@
+import { AnimatePresence } from "framer-motion"
 import React from "react"
-import { HashRouter as Router, Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import { themeChange } from "theme-change"
 import "./App.css"
 import "./index.css"
@@ -14,15 +15,17 @@ function App() {
     themeChange(false)
   }, [])
 
+  const location = useLocation()
+
   return (
-    <Router>
-      <Routes>
+    <AnimatePresence exitBeforeEnter initial={false}>
+      <Routes location={location} key={location.pathname}>
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path={`/${getRouteFor("bricks")}`} element={<BrickInTheWallPage />} />
-        <Route exact path={`/${getRouteFor("third-puzzle")}`} element={<ThirdPuzzlePage />} />
+        <Route exact path={`/${getRouteFor("third")}`} element={<ThirdPuzzlePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </Router>
+    </AnimatePresence>
   )
 }
 

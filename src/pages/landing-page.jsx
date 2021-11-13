@@ -19,8 +19,6 @@ function LandingPage() {
     showButton ? buttonOpacity.set(1) : buttonOpacity.set(0)
   }, [buttonOpacity, showButton])
 
-  console.log("step", step)
-
   return (
     <SlidingDoor
       leftPanel={

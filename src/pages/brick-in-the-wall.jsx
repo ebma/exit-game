@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import React from "react"
+import PageAnimation from "../components/PageAnimation"
 import TypewriterText from "../components/TypewriterText"
 import { useSolution } from "../lib/solutions"
 
@@ -75,17 +76,24 @@ function BrickInTheWallPage() {
   }, [goNext, step])
 
   return (
-    <div className="mx-auto overflow-hidden">
-      <div className="min-h-screen hero">
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="text-center hero-content text-neutral-content">
-          <div className="max-w-lg">
-            <TypewriterText className="mb-5 text-3xl">Another brick in the wall</TypewriterText>
+    <PageAnimation>
+      <div className="mx-auto overflow-hidden">
+        <div className="min-h-screen hero">
+          <div className="hero-overlay bg-opacity-60"></div>
+          <div className="text-center hero-content text-neutral-content">
+            <div className="max-w-lg">
+              <TypewriterText className="mb-5 text-3xl">Another brick in the wall</TypewriterText>
+            </div>
           </div>
+          <BrickWall
+            selected={selectedBrick}
+            onSelectedClick={() => setStep((prev) => ++prev)}
+            rows={30}
+            columns={30}
+          />
         </div>
-        <BrickWall selected={selectedBrick} onSelectedClick={() => setStep((prev) => ++prev)} rows={30} columns={30} />
       </div>
-    </div>
+    </PageAnimation>
   )
 }
 
